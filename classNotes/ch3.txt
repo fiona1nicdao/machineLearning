@@ -1,0 +1,133 @@
+chapter 3: a tour of Machine Learning clasifier usign scikit-learn 
+ - no free lunches: we don't konw which is the best algorithm for any dataset 
+ -- no classifier works best across all scenarios 
+
+scikit learn python code 
+- has datasets for you 
+- can split the data  to 70% training and 30% testing 
+- can import algorithms ex: percepron 
+-- fit method is the training / learning 
+- can make predictions and use the test set with .predict method 
+- you need to try different algorithms for your dataset and see which one works best 
+
+Modeling clas probablity 
+- build a model that will give the probablity of the outcome 
+- set a threshold for yes will class label or not not the class label 
+- odd ratio = probablity of p / probablity of not p 
+- log of the odds ratio of p = logit(p) = log(p / 1 -p)
+
+Logit function 
+- 
+
+Modeling logit function 
+- weight is large = then the feature matters a lot of the outcome 
+- 
+
+Logistic Sigmoid - imporant function in machine learning !!!
+- will always output a value between 0 and 1  use to learing ? 
+why is having a value between 0 and 1 imporant ?? / useful 
+
+-------------------
+Sept  26, 2024  Chapter 3
+Logistic regression model 
+- we will work on log function 
+= modeling logit function : model the probablity of an outcome 
+ex: model the probablity it will rain 
+w0x0 : 
+x : features / quantities  
+- logistic sigmoid : logit of p 
+- convert the range from zero and one 
+- no matter what z value is will be between 1 and 0 
+
+Relationship with Adaline 
+- net input = scaler / any  real number 
+- use sigmoid function change the number between 1 - 0 
+- only use sigmoid function to model for probablity 
+
+probablity distribution over classes 
+- threshold on the net-input (Z) OR  eta(z ) sigmoid function 
+-threshold to get quantizer : we pick the threshold 
+
+Learning the weights 
+- some way to show how good our model is 
+- cost function for log regression : define the -liklihood L 
+ -- look at slide 11
+ -- binary cost entropy ? train neural networks ?
+ -- loss functio is another name 
+ -- "for" large pie = signifies the operation of multiplying a series of number s together 
+L(w) is a high number than a good thing b/c training is going well 
+
+Log-likelihood function 
+- maximize the likelihood function 
+
+Cost function 
+- want to minimize the cost function 
+- rewrite likelihood as a cost function / can now to minimize using gradient descent 
+- 
+
+Overfitting 
+- video : overfitting vs underfitting 
+- ex: machine learning for russian tank / us tanks - overfitting with night and day 
+- overfitting performs well on training data but doesn't generalized well to unseen data (test data)
+    if a model suffers from overfitting, the model has a high varience 
+    this is often cuased by a model that's too complex 
+- underfitting : can also occur (high bias)
+    underfitting ... 
+Regularization : adding information in order to solve an ill-posed problem or to prevent overfitting 
+    we want the model to generalize NOT fit the training data 
+    a good compromise is good ! 
+    ex: nueral networks - memorize the training data : we want to learn from the data 
+    Regularization is to prevent overfitting 
+    noise = errors in the data 
+
+L2 Regularization
+- lamba so that the one of the weights do not grow out of proportion 
+- so because we are minimize the cost function and we need to minimize the weights from growing out of hand 
+- lamba is a constant = how much regulation we apply (we choose the number)
+    how to choose a good lamba ? 
+    bias = random state ? 
+w is the model parameters 
+hyper parameters : learning rate , lamba , etc - we set ourselves 
+
+Weight decay 
+Regularization parameters 
+    C = 1/ lamba
+
+Regulation illustrated 
+- 
+
+Support Vector Machine 
+- SVM similar to linear regression - different loss function
+- b/c of deep learn so SVM are not used as often 
+- Maximum margin classification 
+
+Maximum margin classification 
+- line / plane / hyperplane
+- plane is to 
+- what are suprort vectors : pts that bound the discision boundary / margin  to maximize the margin 
+- use opimziation of decision line by max the margin 
+- support vector : the pts that define the decision boundary 
+
+logistic regression - know well1!!
+SVM know the pictures !!! okay / math not soo important 
+
+Mathematrical intuition - how to caputure the hyperplane 
+the weights of the define the margin 
+
+Constrained optimization problem 
+- capture the SVM Mathematicaly 
+
+SVM Solution -skip 
+
+Exclusive OR (XOR) linear separability 
+- no way to separate the blue and red dots 
+
+Turn non-separable classes are separable 
+- using the linear classeifier 
+= use a line / plan to separate 
+- how we got to 3D ?? mapping function 
+
+Generated XOR data 
+- how we got to the 3D from 2D
+
+

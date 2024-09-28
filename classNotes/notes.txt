@@ -1,0 +1,105 @@
+comp 474 : Machine Learning 
+huggingphase.co ? deep learning 
+chapter 1 ML intro 
+- AI building computers that act like humans 
+-machine learning is a way to do  build AI 
+math to learn 
+-math: partial derivatives , matrix and vector operations , 
+-      basic probablity and statistics : conditional probablity and normal distribution 
+matrix is table (arrays 2d)
+ 
+ Programming: python, numpy, matplotlib 
+ - numPy library will help with matrix 
+ - matplotlib library will help with plots 
+
+machine learning - wiki 
+- explores that study and construction of algorithms that can learn form and make prediction on data 
+
+applications: image recongnition, spam classification , web search engines, voice, recongnition, line to quora
+ - large language models, generative AI, deep fakes, alpha folds
+ - web search engines : rank the webpages of the "best" website on the top 
+ - 
+
+machine learning: processing LARGE data 
+
+three types of ML 
+- supervised learning - learning by examples (80% of the course)
+- unsupervised learning - give you data and find the patterns (told nothing)
+- reinforcement learnign -  more important today - ppl use large models (generative AI)
+                different from supervised learning by ... soccer and chess 
+                review recongnition learning 
+
+MLP class for the spring - large language models 
+Yann LeCun explains supervisedlearning (con-nets)
+- a pattern  recongnition system is like a block box ith a cammeria at one end , and a green light and a red light on topm and a while bunch of knobs on the front 
+the learning algorithm tried to adjust the nobs so that whe msay a dog is in front of the cameria, the red light turns on and when a cari is put in front of the camera, 
+the green light turns on . Yuo show a dog to the machine. if the red light is bright, don't do anything . if its dim , tweak the knobs so that the light get brighter 
+
+what is a model ? a function ... what is a function ? a set of steps that you put an input and get an output 
+
+scaling up 
+- IEEE Spectrum interview / deep leaning system 
+- gradients computing 
+
+Supervised learning 
+- predicting the future with supervised learning (predicitng the future with NEW data )
+- classification vs regression 
+    classification - finite: SPAM or NOT SPAM (finite number of labels )
+    regression - infinite: continuous number of labels / gradient (the price - is a scale)
+training data: examples of cat and dog 
+labels (classes) = cats and dogs 
+
+classification 
+- predicts categorical class labels based on past observation 
+- class labels are discrte unordered values
+- email spam classification example (binary) - two options: yes or now/ 1 or 0 / + or - 
+- handwritten digit classification example (multi-class): like scanning a document / deposit the check / image to text 
+
+regression 
+- continuous outcomes 
+
+unsupervised learning 
+- dealing with unlabeled dat 
+- cluster analysis
+- objects within a cluster share a degree of similarity 
+- examples: latent dirichlet allocation (popular machine learning) LDA , Sara Palin topics 
+
+Iris dataset : why matrix are important 
+- samples: instances, observations : the rows are the instances 
+    each row is a vector: list of values / list of numbers / bunch of numbers 
+    a stack of rows (vectors) is a matrix 
+    matrix in the 4D can find a way to get a line to separate 
+- class labels: targets : are the last column 
+- features: attributes, measuresments, dimensions : columns are the features 
+     features can be numbers, characters, enum
+     non-number features will need to calculated to numbers / map to numbers 
+     titanic dataset 
+
+Basic term
+- sample x features matrix ex: 150 samples of flowers x 4 features 
+- how to extract these features ? hard to get these measuresments
+- features that will predict the class target 
+
+Model selection 
+- no free lunch theorem: no one algorithmt that will work with all problems 
+    any two optimization algorithm are equivalent when their performancis averaged across all possible problems 
+- learning algorithms: neural networks 
+example:  a toy universe that exist for exactly two days on each day (not good example)
+
+model selection
+- whats the intuition behind NFL? 
+- each classification algorithm makes assumptions 
+- often we empirically determine wha works best 
+- but how do we know what works best ? 
+    classification accuracy
+    train+Dev + Test split 
+    hyperparameter optiziation (knobos of the model )
+
+Python of ML 
+- library for scientific computing such as NumPy and SciPy
+- performance of interpreted languages is inferior
+- but numpy and scipy build upon lower level C and fortan subroutines 
+-scikit-learn library
+0 see page 13 for installiation instructions 
+
+NumPy slides 

@@ -1,0 +1,185 @@
+Chapter 2: Training Simple Machine Learning Algorithms for Classification 
+Biology : picture of a nueron
+- take a feature and make a prediction 
+
+Logic Gate 
+- some input and spit out an output
+- true and false 
+
+Rosenblatt perception
+- binary classification task
+- postive class (1) vs. negative class (-1)
+-define activation function o1(z)
+-takes as input a dot product of input and weights
+-net input: z = w^1x^1 + . . . + w^mx^m 
+- x is usually the input 
+- y is usually the output 
+- w is weights 
+
+Heaviside step function
+- look at the dot product and if it above or equal to theta then true 
+- if dot product is less - false 
+
+step function simplied 
+-
+
+Basic Linear Algebra 
+-  vector dot product (KNOW HOW TO DO)
+- bold is a vector 
+- not bold is scalar 
+- T is transport (will be taking the dot product)
+
+Input squashed into a binary output 
+- x1 is one feature 
+- x2 is another feature 
+- usually have more features but not here b/c it would be harder to visualize  
+
+reosenblatt perceptron algorithm
+- where are the weights coming from? learning = changing the weights to be better 
+- initalize weights can be zero or random numbers: in real life there are tricks to initalize the weights 
+-- if the weights are zero : then the answer is always positive 
+-- if the weights are all one: it depends on the features 
+- how to we update the weights ? = learning 
+
+weight update
+- y hat is the prediction (always 1 or -1 )
+- y is the known label (always 1 or -1 ) 
+- xj is one of the features (the jth feature) of the ith example 
+- we are using the known lables to help with making our predictiong 
+- if the clasifier predicted the correct prediction then the weight is zero and does not change (so no learning happens because it got is correct ) 
+- when the wrong predictions (when learning happens) - and weights pushed toward the positive or negative class 
+
+we are trying the change the weights to get them to be "perfect" to accurately predict the data 
+- w (weights) is our model 
+
+weights of the features when one features is a better predictor of passing the class 
+number of features = number of weights 
+x is a sample and all the features 
+letter in bold is a vector 
+will get the dot product 
+weights are the same for all samples. 
+
+exam in two weeks (aug 29) - basic and fundamentaions of ML exams - in person / no notes 
+
+Linear separability 
+-  z is a line (hyperplane linear - for more features ) 
+- accuracuy = number of correct positions / out of all the total positions 
+- the error rate: 
+
+convergence 
+- the algorithm is an infinity loop: so how we tell the algorithm to stop ? 
+-- maybe when all the weights are correct so the change of weights are all zero 
+convergence is telling you when to stop 
+convergence is guaranteed if they are linear separable 
+when the data is linear separable then it convergence 
+what to do when your data is not linear separable ? 
+-- set a max number of passes, threshold for the number of tolerated misclassifications (like if it okay for three data examples that are misclasified)
+
+Linear separability image 
+- theta is always the first data point (1) * w0
+-- it is the bias 
+theta is the threshold of what is positve and negative 
+- what is back propagagtion 
+
+one epochs is one pass through the whole data
+leanring rate:  controls how fast or slow the learning happens  
+_____________________________
+neural networks can learn more complex data 
+- perceptrons is just one neuron 
+------------------------------
+
+ADAPtive LInear NEuro (Adaline)
+- how the weight update came to be 
+- similar to perceptron 
+- needs calculus *** review ****
+    -- derivatives the easy way  
+the activation function is now the identity function 
+    e.i. f of x is just x  
+    will always return the dot product 
+    train the classifier 
+
+Train the classifier 
+    need a cost  / objective function / loss function - ways of taking the model and how good the model is right now  
+    y is output (the correct one )
+    x is the features 
+    z is the dot product 
+    theta is .... 
+    theta * z is the prediction 
+    the summation of the entire set (for loop)
+    look at the different 
+    metric on the bases of the entire training set 
+    we square so we allways have a positve number 
+    1/2 just to simplify things 
+
+use calculus to find the place for the function where the weights give us a good model ? 
+we want the J(w) is low number 
+take the derivate and set it to zero 
+
+-------------------------------------
+Sept 12, 2024 continue with chapter 2 
+
+EXAM NEXT WEEK ! - at the end of the class (30 mins / 45 mins - 5 questions ) Chapter 1 and 2  
+
+What is a derivative ? f'(x)
+- rate of change 
+- describes how the function changes 
+- f'(x) is large = so the rate of change is great 
+- for machine learning we want to know which function is growing / changing faster 
+
+Slides (ppt) for Chapter 2 
+- review: x = inputs/ w = weights 
+Adaline: notice the difference with perceptron
+
+Cost functions 
+- tells us how diff the predict from what we expect 
+- for loop for every example we have and calculate the total error 
+- cost function = loss function (usually used for nerual networks) = objective function
+activation function must be continuous 
+the cost function will tell us if our predictions are better = so the J(w) value  should decrease if it working better 
+-- the cost function value should decrease 
+-- the output of cost function depends on the weights b/c that is only value that is changing / all the other variables should be constant 
+
+Advantages of Adaline cost function 
+- use a activation function should be a gradient 
+
+What is the gradient ? Ask Wiki 
+blindfolded hiker in the mountain : Gradient Descent 
+- issue is getting stuck at a local minimum
+-the terrrain is the cost function 
+- find the min of a function 
+-- set the function to 0 and that is the min  
+
+Gradient Descent
+- our goal is to find delta 
+- bold numbers are a vector 
+- eta is a constant 
+- J is the cost function 
+-- upsidedown delta is the gradient 
+-- learning rate is ... tells you how fast or slow 
+--- the learning ratie is small / how large the changes to the weights ( we choose what the learning rate is usually start with 0.001 and then can go as big as 100 and then 0.001)
+--- how to know if you're in a local min or a global min 
+--- people can use an adaptive learning rate 
+--- find the gradient  then move away from the gradient 
+Partial derivatives 
+- the sum of squared errors (SSE)
+
+Adaline learning rule vs Perceptron rule 
+- can take a "batch" gradient of a batach of examples of e.i for 10 examples instead of the all examples 
+
+chatGPT - uses Stochastic gradient descent (SGD)
+
+SGD details 
+- differnt types of gradient decent 
+- one of the types of gradient decent : take a sample of the data and this is called Stochastic gradient descent (SGD)
+
+learning rates : if it is too large you are just jumping all over the place 
+learning rate : if too smaller your algorithm will run super long / slow and have a lot of epochs 
+iteration = epochs 
+
+w is a model parameters 
+will be other model parameters 
+learning rate are hyperparameters - only way to find a good learning rate is by trial and error 
+
+preceptron vs adaline 
+- adaline is like a regression model (continous )
+- preception is like a classification model (discrete )
