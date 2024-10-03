@@ -1,0 +1,23 @@
+Oct 3, 2024
+Chapter 6: Model Evaluation and Hyperparameter Tuning 
+How do we know the model is working ? 
+    model evaluation 
+    figure out if the model is doing what you want to do 
+    key concept : estimate model performance on *unseen* data
+    performance metrics 
+The holdout method 
+    split data into training and test datasets 
+    only suppose to use the test set once 
+    a better approach: training set + validation set + test set 
+The holdout method 
+    look at figure ! 
+    you evaluate with the validation set and use it to pick the best model 
+    test set only use once to predictive model 
+    must shuffle the training set and the validation set to prevent overfitting
+    should the validation and test set / netflix show that will see if i like the shows 
+        you need data / examples that you like or don't like 
+    training data is very expensive / test data for classifier 
+    training data need to large and all your data 
+    you will never have enough data 
+    your model will be better with more and more data test 
+        

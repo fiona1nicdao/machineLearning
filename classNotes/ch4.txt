@@ -1,0 +1,52 @@
+Oct 3, 2024 
+Chapter 4 : data preprocessing : practical issues 
+L1 regulation important !!!
+Splitting data into train and test
+    download the win dataset 
+    similar to homework 
+    clear that you can't use the training data for test data 
+    you want unbias data 
+    so allocate some portion for testing and use the rest for traing 
+        70% testing and 305 for testing 
+    N-fold cross-validation : will look at chapter 6 
+Wine datast 
+    table of the features of the wine 
+feature scaling 
+    have features with different ranges 
+    how to fix : normalization or standarization 
+Normalization 
+    normalization refers to the rescalling for the features to a range of [0,1]
+Standartization 
+    the procedure of standardization can be expressed by the following equation 
+L1 regulation 
+    L2 - to limit overfitting 
+    L2 regulation - one approach to reduct model complexity / L2 making sure that one of the weights don't overpower the other weights because it is overfitting and not generalizing / also minimizing the weights / is the sum of the w^2 
+    L1 is sum of the weights is aboluate values 
+    L1 is very different from effect from L2
+L1 regularization 
+    L1 yields sparse solutions look at example 1 and example 2
+    vectors is a series of numbers 
+EXAMPLE 1
+    model with weights w = [0.1,0.9]
+    features x = [10,12]
+    so the 2nd feature is more important than the 1st feature 
+EXAMPLE 2
+    model with weights w = [0.1,0.9,-0.17, 0. 19, ... 0.5]
+    how do you understand when there are a lot of weights 
+    how do you interpret the model know 
+    so a model with weights that are 50 are not easy to interpretate 
+EXAMPLE 3 
+    model is easy to understand when most of the features are zero and only a few weights / features matter 
+L2 regularization 
+    graph / mathemetical explanation 
+    penalty term 
+    cost penalty
+    the compromise is the middle point of minimize cost + penalty 
+L1 regularization 
+    easier to find bc absolute value graph 
+
+Why would be use L1 vs L2 ? learn in chapter 6
+    L1 - want if zero weights / less weights 
+    L2 - 
+
+LOOK AT python code for chapter 4  

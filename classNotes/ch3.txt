@@ -221,3 +221,5 @@ EXAM
     slide (35) 
     logistic regression are simlar to SVM
     implementing no libraries / 
+    chapter 1, 2,3 
+    EXAME in 2 weeks 
