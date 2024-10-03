@@ -130,4 +130,94 @@ Turn non-separable classes are separable
 Generated XOR data 
 - how we got to the 3D from 2D
 
+_____________________
+Oct 3rd 2024 
+Maximum margin classification 
+    look at figures and memorize and be able to explain !! 
+    want the margin to be Maximumized 
+    support vectors define the margins / decision boundary
+Mathematical intuition 
+    know the basics 
+    positive and negative hyperplanes that are parallel to the decisions boundary, whihc can be expressed as follows: 
+    minimize || w||
+constrained optimization problem 
+    minimize = 1/2||w|| ^2
+    subject to contrains that the samples are classified correctly
+    all the positive examples on the positive side 
+    all the negative exmaples on the negative side 
+    software libraries to do this 
+SVM solutions 
+    look at the formula of classifier and weights 
+    w of the model depend on the training examples and depends on the labels and have a costant / variable alpha 
+    w is the summation of all the training examples of alpha times labels times features 
+    alpha is zero for all the examples EXCEPT for the support vectors 
+    don't know in advance the support vectors / alpha  - running the numerial optimization you will find it but won't know for the course 
+    what are the support vectors ??? EXAM QUESTION 
+Slack variables / soft margin SVM
+    slack variables : allow some instances to fall off the margin, but panalize them 
+    how to many claffication alorgirthms more powerful 
+    for non-linear classifiers 
+    don't need to know the math 
+Extending SVM to non-linearly separable clases
+Regularization in SVMS
+    logistic regression C : 1.0 
+    Linear SVC C : 1.0
+REgularization in SVMs
+    how wide the margin are 
+    C is a hyperparameter
+    always use the C for the soft margin / don't normally use C the original way 
+Exclusive OR (XOR) linear separability 
+    this data is not linearly separatable 
+    1950s wrote a book that nerual networks will not work on data that is NOT linearly separatable -- yes for perceptron but NOT true for nueral networkds b/c of XOR function 
+Generated XOR data 
+    kernal methods create non-linear combination of the original features 
+    probablity
+    mapping function : hypotenus / patheryon thermo
+    d1 =  x1 , d2 x2 , d3 x1^2 + x2^2
+    d = demension 
+    making the hyperplane 
+    use a linear separable to make non-linear data "linear" 
+Kernel trick 
+    not on the exam
+    automate /
+Kernel Trick: example 
+    dot product of (x * z)^2
+    regulation is still important : russian bomber used tires to trick the Machine learning - by overfitting 
+K-nearest neighbors 
+    save model parameters = weights ******** EXAM 2 answer 
+    KNN does not have any weights / non-parametric model 
+    once you train the data you don't need the training data anymore 
+    model is a approcimation / zipfile - loss-less compression 
+    KNN there is not training / the training data is the model 
+    SO CANNOT throwout the training data 
+    good for webbase more that takes in new data all the time 
+    NO training 
+    BUT there is TRAINING data ! 
+Basic KNN algorithm
+    choose ... 
+slide 42 
+    3 classifiers : predict and look at the neighbors about it 
+    more examples around it is from a particular class so predict it is from this 
+    look at "k" examples around the predicted and count and assign the class of the predicted to the "?" is from the most counted classifer 
+    in practice don't have super "close" example to the predicted one "?"
+    define the circle = KNN algorithm use it to define it / you need defien spacial values / you need a distance measurements / some way to learn simularity 
+KNN advantages 
+    need distance metrics 
+    eucidean distance 
+    manhattan distance 
+    cos/sin - angle of the predict 
 
+the model is the final weights / 
+
+HW3 : working on the classifiers 
+C represent regulation of the weights / controls the strength of the model / russian tank example 
+try C = 0, 1, 10, 0.0001, 0.001 --  1, 10, 100, 10000 
+need to save the model for regression ! from sklearn 
+
+EXAM
+    ask about SVM
+    ask about : rising to a higer demnsional / turn non-separable classes are separable(34)
+    first transform to 3 d 
+    slide (35) 
+    logistic regression are simlar to SVM
+    implementing no libraries / 
