@@ -36,3 +36,79 @@ Model Selection
     hyperparameter example for logistic regression : k value (KNN) / c value (logistic regression)
         can't predict hyperparameter / can't learn hyperparameter
     training data help us to learn the model parameters 
+
+The holdout method 
+    split data into training and test datasets 
+    better approach: training set + validation set + test set
+    (look at the diagram) to find the good hyperparameters -  slide 4
+    feature selection - l1 will do that for you 
+    calculate the accuracuy of the model with the validation set and not the test set b/c will use that at the very end 
+
+K-fold cross- validation
+    take the training set turn it into folds and k is typically 10 or 5  + use the 10th fold as the test fold  find the accuracy 
+    interate and use the 9th as a test and find the accuracuy
+    ... to the 10th interation 
+    than you take the submation of all the accuracuy  
+    this is the most accurate way to set the model 
+    want a larger sample 
+    the problem is you have to do this 10 times = it will be compuationally expensive 
+    hyperparameter is the same for all iterations
+    test fold is not the same as test set!!!  
+    ** know how to do this manually 
+
+Class example : logistic regression
+c   accuracuy
+1   89% -- > use this C value 
+10  72% 
+100 81%
+
+K-fold cross-validation
+    disadvantage 
+
+Variation on the theme of k-fold cross-validation
+    -Leave-one-out cross validation 
+    good for small datasets 
+    - stratified K
+    better performance estimate for imbalanced data 
+
+Grid search 
+    https://www.csie.ntu.edu.tw/~cjlin/libsvm/
+    ask to do this in next homework 
+    brute-force exhaustive search of hyperparameter space 
+    a bunch of nested for loops 
+    specify the search space 
+    very expensive and takes a lot of time and money (compuationally)
+    random search of a random combination of hyperparameters and models 
+
+Class example : decide SVM vs logistic regression
+    C = 1, 100, 1000
+    normalization vs no normal vs standardization 
+    a grid of 12 different combination 
+
+Performance evalation metrics 
+    need ways to compute the performance for a specific class !! 
+
+accuracy is not the best way to measure data 
+medicine : accuracuy isn't used to measure 
+    ex: out of the 
+
+Other ways to measure model / data (for a specific class)
+precision (plus) 
+    ex: 2 plus are correct / 4 assigned to the plus class 
+recall (plus)
+    ex: number of classsifiers correctly / out of all the examples from the plus class  2 /3 
+F1 score (plus) is the average of precision and recall 
+    good for imbalanced datasets
+
+confusion matrix 
+    actual class to predicted class 
+    true positives , false positives, false negatives, true negatives 
+
+deducing performance metrics from a confusion matrix 
+    the error can be understood as the sum of all false predcitions divided by the number of total predictions
+
+precision, recall, F1 
+    formulas all of them 
+    F1 is the score is the combination of precision and recall 
+    F1 is usually for the "positive class" 
+    must focus on one class !!! 

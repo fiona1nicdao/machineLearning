@@ -3,3 +3,7 @@ exam 2= l1
      know the weight update 
 exam3 = before thanksgiving  break
 no final exam / project presentation on the final day 
+
+project will be about interesting dataset 
+and model the dataset / accuracuy / predicitng / 
+find interesting datasets 
