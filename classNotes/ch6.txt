@@ -21,3 +21,18 @@ The holdout method
     you will never have enough data 
     your model will be better with more and more data test 
         
+--------------
+October 10, 2024 
+How do we know the model is owrking ?
+- moodel evaluation 
+- how do you obtain an unbias etimate of model's performance 
+- key concept: estimate model 
+
+Model Selection 
+    how to pick the right model 
+    also deciding the hyperparameter of the model 
+    model parameters are the weights 
+    models are also classifiers
+    hyperparameter example for logistic regression : k value (KNN) / c value (logistic regression)
+        can't predict hyperparameter / can't learn hyperparameter
+    training data help us to learn the model parameters 
