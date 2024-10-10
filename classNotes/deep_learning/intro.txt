@@ -1,0 +1,17 @@
+https://cs231n.stanford.edu/  - deep learning standford class
+
+lecture 1: introduction 
+
+Imagenet 
+    22k categories and 14 million images 
+    22k different classifiers 
+    animals / plants / structures /preson / etc ...
+
+image classification challenge : 1000 objects classes 
+
+graph is the error 
+    2010 the error is 28.2 
+    2012 used neural networks used and error rate went down 
+    2015 the image classificatio challenge basically solved smallest amount of error 
+
+Convolution neural networks (CNN) have become an important tool for object recognition 

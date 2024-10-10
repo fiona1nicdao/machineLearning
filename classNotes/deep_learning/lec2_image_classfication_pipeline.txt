@@ -1,0 +1,43 @@
+lecture 2: image classficiation pipline 
+
+image classficiation : a core task in computer vision .. 
+
+the problem : semantic gap
+    what the computer sees 
+    an image is just a bog grid of numbers between [0,255]
+    a pixal by pixal image - is what the computer sees 
+    ex: 800 x 600 x 3 (3 channels RGB) 
+        RGB = red, green, blue which is a number 0 - 255 
+
+an image classifier 
+    ... 
+attempts have been made 
+    find edges , find corners 
+
+data-driven approach 
+    1. collect a dataset of images and labels 
+    2. use machine learning to train a classfier 
+    3. evaluate the classifier on new images 
+
+First classifier : nearest neighbor 
+    memorize all data and labels 
+    predict ... 
+
+Example dataset: CIFAR10 
+    won't work 
+ skip a lot of slides 
+
+linear classfication 
+
+neural networks is multiple linear classifiers 
+
+Parametric approach / linear classeifier
+
+matrix (3 x 4)
+first number is the number of rows 
+second number is the number of columns 
+ex: 3 rows and 4 columns 
+
+[ 3, 4]  * [4 X 1] = [3, 1]
+
+end in slide 58 on Oct 10,2024
