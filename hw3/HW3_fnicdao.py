@@ -20,7 +20,7 @@ from collections import Counter
 ## please change the file_path to where you store titanic train.csv file
 file_path = '/Users/fionanicdao/loyola/machineLearning/titanic_hw1/train.csv'
 df = pd.read_csv(file_path)
-
+#prepressing the Titanic Dataset 
 class TitanicDataset(object):
     def process_data(df):
         # drop useless data : PassengerId , Ticket , Fare , Cabin , Embarked
@@ -93,7 +93,6 @@ accuracy_score = []
 Cs = [0.0001, 0.001, 0.01, 0.1, 1,10, 100, 1000]
 C_num = [1,2,3,4,5,6,7,8]
 for c in Cs:
-    # print(c)
     lr_c = LogisticRegression(C=c)
     lr_c.fit(X_train, y_train)
     acc = lr_c.score(X_develop, y_develop)
