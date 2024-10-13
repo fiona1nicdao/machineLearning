@@ -88,7 +88,7 @@ improve your model's performance on the developement set
 
 Hyperparameters tested: C value, random state, solvers
 """
-# C values : 0.0001, 0.001, 0.01, 0.1, 1,10, 100, 1000 
+# C values : 0.0001, 0.001, 0.01, 0.1, 1,10, 100, 1000 (default C=1.0)
 accuracy_score = []
 Cs = [0.0001, 0.001, 0.01, 0.1, 1,10, 100, 1000]
 C_num = [1,2,3,4,5,6,7,8]
@@ -107,21 +107,8 @@ ax.set(xlabel="C",
        title="Performance of Logistic Regression with Change of C values ")
 plt.show()
 
-# random state a range from 1 to 50 
-accuracy_rs = []
-r_states = range(1,50)
-for r in r_states :
-    lr_randomstate = LogisticRegression(random_state=r).fit(X_train, y_train)
-    acc = lr_randomstate.score(X_develop, y_develop)
-    accuracy_rs.append(acc)
-fig, ax = plt.subplots()
-ax.plot(r_states, accuracy_rs)
-ax.set(xlabel="random state",
-       ylabel="Accuracy",
-       title="Performance of Logistic Regression with Change of Random State")
-plt.show()
-
 # solver algorithm :'lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky','sag', 'saga'
+#                   default solver= 'lbfgs'
 accuracy_solver = []
 solvers = ['lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky','sag', 'saga']
 for s in solvers :
@@ -135,10 +122,23 @@ ax.set(xlabel="solvers",
        title="Performance of Logistic Regression Solver Algorithm")
 plt.show()
 
-# penalty = {‘l1’, ‘l2’, ‘elasticnet’, None}, default=’l2’
+# penalty : ‘l1’, ‘l2’, ‘elasticnet’, None (default penalty = 'l2')
+accuracy_penalties = []
+penalties = ['l2', 'l1', 'l2', 'l2', 'l2','l2','l1', 'l2']
+solvers = ['lbfgs',  'liblinear', 'liblinear','newton-cg','newton-cholesky','sag','saga','saga']
+for p,s in zip(penalties,solvers) :
+    lr_randomstate = LogisticRegression(penalty=p,solver=s).fit(X_train, y_train)
+    acc = lr_randomstate.score(X_develop, y_develop)
+    accuracy_penalties.append(acc)
+fig, ax = plt.subplots()
+ax.plot(penalties, accuracy_penalties)
+ax.set(xlabel="penalties",
+       ylabel="Accuracy",
+       title="Performance of Logistic Regression with Change of penalties")
+plt.show()
 
 """
-part 3 : implement your own k-nearest neighbors classifer (KNN) from scratch. 
+part 3 : implement your own k-nearest neighbors classifier (KNN) from scratch. 
 Tune the k value to achive the best possible performance on the development set.
  the KNN algorithm can be summarized by the following steps: 
  1. choose the number of k and a distance metric
@@ -181,7 +181,6 @@ class KNNClassifier:
         y_pred = self.predict(X_test)
         acc = sum(y_pred == y_test) / len(y_test)
         return acc
-
 
 knn = KNNClassifier()
 knn.fit(X_train, y_train)
@@ -235,7 +234,7 @@ part 5: compare your best model that you built in step(2) to your best KNN model
 evaluating them on the 'test' set. Document your results and include the performance 
 of your baseline systems from step(4) in  your analysis for comparison 
 
-Logistic Regression : 0.1, random state=1, solver='lbfgs'
+Logistic Regression : C=1, penalty='l2', solver='lbfgs'
 KNN : k = 5 
 """
 lr = LogisticRegression(C=1, random_state=1, solver='lbfgs')
