@@ -1,0 +1,39 @@
+recall from last time : linear classifiers 
+    we have 3 examlples airplane classifiers and deer classifiers car classifiers 
+    W is the parameters or the weights 
+    x is example / samples 
+    b is a bias - represent our prior knowledge of / bias don't really change 
+    each row is a different classifier 
+    weights * the pixels (examples) + bias = score 
+    airplane line just tells you if its an airplane or not an airplane 
+
+Recall from last time: Linear Classifier 
+Todo :
+    1: define a loss function that quantifies our unhappiness with the score across the training data 
+    2: come up with a way of efficiently finding the parameters that minimize the loss functoin (optimization)
+
+Supposed: 3 training examples. 3 classes / with some W the scores f(x,W) = Wx are : 
+    a loss function tells how good our currect classifier 
+
+Multiclass SVM loss:
+    given an example (xi,yi) where xi, is the image and where yi, is the (integer) label, and using teh shorthand for the scores vector: s = f(xi, W)
+    the SVM loss has the form:  
+    exam will look like this slide 14 
+    Hinge Loss 
+
+slide 15: review formuula why +1 ? the car is classified correctly
+slide 16: frog was classified wrong so largest loss function 
+slide 17: we want to decrease the loss so that means the more examples are classified correctly
+slide 37 : softmax classifier (multinomial logistric regression)
+what does unnormazlied mean ? 
+    we have 2 classe 
+        class 1: 20, 
+        class 2: 80, 
+        p(class 1) = 20/ (80 + 20)
+        log of probability 
+
+review slide 45 
+unnormazlied log probability
+the goal of the softmax / loss function is max the probability of the correctly label (class) directly 
+softmax is similar to logistic regression 
+review 
