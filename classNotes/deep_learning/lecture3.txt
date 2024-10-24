@@ -37,3 +37,22 @@ unnormazlied log probability
 the goal of the softmax / loss function is max the probability of the correctly label (class) directly 
 softmax is similar to logistic regression 
 review 
+ -------------
+Optimization 
+
+Strategy # 1 : a first very bad idea solution: random search 
+    lecture 3 slide 57
+    brute force 
+    the loss a smaller number is better 
+
+Strategy #2 " follow the slope 
+    in 1-dimension, the derivation of a function :
+    df(x)/ dx = lim h -> 0 (f(x+h) -f(x))/h 
+
+In summary:
+    numberical gradient : approximate, slow easy to write 
+    analytic gradient: exact, fast, error-prone 
+
+try Lec 3 - slide 77 at home 
+
+

@@ -1,0 +1,62 @@
+Lecture 4 : Neural Networks and Backpropagation 
+
+Where we are ... 
+    linear score function - scores  different weights 
+    SVM loss (or softmax) - we have different loss functions 
+    data loss + regularization - we have regularization term to make sure we are not over feeding 
+    How to find the best W? 
+
+Why the matrix is the shape ? 
+    the number of scores have to match the number of classes 
+
+Problem: Linear Classifiers are not very powerful (lec 4 slide 9)
+
+one solution: feature transformation 
+
+image features vs ConvNets 
+    before deep learning we need to manually extract features / typically nosiy 
+    deep learning - feature extraction is replaced by a machine learning model 
+    the example is deep convolutional neural networks / and still their is a linear classifier 
+    neural networks able to extract features 
+
+Today : Neural Networks
+Neural networks : without the brain stuff 
+    (before) linear score function : f = Wx 
+    list of D numbers 
+    W is a matrix of real number and H rows and D columns  ?? 
+
+    Now : 2-layer neural networks :
+    if the score are above zero keep / if not zero the score out 
+        W1 matrix 
+        W2 matrix  
+    
+    Neural Networks is a board term 
+    more specifically : fully-coonected netwrks or multi-layer perceptrons 
+
+    D is the number of features / dimensions 
+
+    Now : or 3 layer Neural Networks 
+    Why layers ? 
+    each layer is a dimension of weights 
+    matrix math matters - the inner dimension must match (3.5) amd (5.10)
+
+lec 4 - slide 18 
+x is an image  
+x * w1  = h 
+[1 x  D] [D  x h ] = h
+h is the hidden layer 
+[3 x 10] [10 x 17] = [3 17]
+
+c is the numer of classes 
+neural netwroks basically extracts the features 
+
+lec 4 - slide 19 
+What does we neeed activation function
+    we need activation b/c without it we are struc with a linear classifier again 
+    powerful neural networks needs multiple layers and activation layers 
+    
+    we turn the layer  to linear classifier 
+
+
+Activation functions  lec 4 -slide 21 
+    there are 
