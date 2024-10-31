@@ -60,3 +60,89 @@ What does we neeed activation function
 
 Activation functions  lec 4 -slide 21 
     there are 
+
+------------------------------------------
+OCT 31, 2024 Halloween
+exam 3 in Nov 22 
+
+Lecture 4 S 13
+Neural networks: without the brain stuff
+(before) linear score function 
+
+l4s21
+Activiation functions
+    sigmoid - probablity 
+    tanh - is always between 1 and -1 
+    use : ReLU - simple max and 0 / input greater than zero or not 
+    Leakly ReLU
+    Max
+
+l4 s23 - EXAM 
+Neural networks : Architectures 
+    input layer : vector of 3 features 
+    hidden layer : compressed transform version of the input
+        features are extracted here 
+    output layer : two units: 
+
+    Why do we need a matrix to store  weights between the input layer / hidden layer the layer ?
+   EXAM: all the inputs go to all the elements of the second layer, with different weights. 
+        m * n where m and n are nodes in each layer 
+    
+    total number of weights / total number of connections = 12 + 8 = 20
+    input * hidden = 3 * 4 = 12
+    hidden *  output = 4 * 2 = 8 
+
+    fully connected layers : all nodes in between consecutive layers are connected 
+
+l4 s24
+example feed-forward computation of a neural network 
+    - push it through all the layers / transformer and compute the output 
+    - use numpy to do a lot of for loops 
+    
+    What we use matrix ? 
+    - we just need a table 
+    - 3 by 4 matrix 
+    What is the shape of the matrix to store the weights 
+
+    input layer features x w1 = activation of hidden layer 
+
+    the forward pass: at the input and process and calculate the output 
+
+l4 s15 
+    python implemeation 
+
+l4 s26
+setting the number of layers and their sizes 
+    how many layer do we do ? 
+    more neurons = more capacity 
+
+    20 hidden nueaons : not a linear classifier 
+    more neurons will have more likely to overfit 
+    use a regularization to combat overfitthing 
+
+l4s29 
+neurons biological - impulses carried toward cell body 
+
+l4s33 
+biological neurons are more complicated 
+and not 1 to 1 with machine learning neural networks 
+
+l4s36 
+problem: how to compute gradients ?
+nonlinear score function , loss function, regularization, gradients and the weights start to drift to better predictions 
+
+l4s37 
+don't have to do this on paper
+
+l4s38
+better idea: computational graphs + backpropagation 
+
+l4s44 - 47 
+backpropagation: a simple example 
+    calculate the derivative 
+    what the noble prize it given to 
+    don't spend time on backpropagation
+
+plan to do lecture 5: CNN  / RNN 
+    alternative nueral networks 
+    convolutional neural networks - for image 
