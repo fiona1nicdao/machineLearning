@@ -1,0 +1,4 @@
+Deep Learning with Keras  
+    based on Francois Chollet Text 
+*** will use this in the project 
+use layers as building blocks then compile it 
