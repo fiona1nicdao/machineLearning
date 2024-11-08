@@ -8,11 +8,11 @@
 
     PART 1 - 4  
 """
-import numpy as np
-import pandas as pd # data processing / CVS file I/O
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import f1_score
+import numpy as np # type: ignore
+import pandas as pd # type: ignore # data processing / CVS file I/O
+from sklearn.model_selection import train_test_split # type: ignore
+from sklearn.linear_model import LogisticRegression # type: ignore
+from sklearn.metrics import f1_score # type: ignore
 
 """
 part 1: randomly split the data into training (80%) and test (20%) sets
@@ -32,9 +32,20 @@ class MarketingCampaignDataset(object):
         
         median = process_df['Income'].median()
         process_df = process_df.fillna(median)
-        print(process_df.isnull().sum(axis = 0))
+        # print(process_df.isnull().sum(axis = 0))
+        # unique = process_df["Marital_Status"].unique()
+        # print(unique)
+        # education : Basic = 0, Graduation = 1, Master = 2, 2n Cycle = 2, PhD = 3
+        process_df["Education"] = process_df["Education"].map({'Basic':0, 'Graduation':1,'Master':2, '2n Cycle':2, 'PhD':3})
+        
+        process_df["Marital_Status"] = process_df["Marital_Status"].map({'Single':1, 'Together':2, 'Married':3, 'Divorced':0, 'Widow':4, 'Alone':1, 'Absurd':1,'YOLO':1 })
+        
+        process_df.drop('Dt_Customer', axis=1, inplace=True)
+        return process_df
+        
 
-df_test = MarketingCampaignDataset.process_data(df)
+df = MarketingCampaignDataset.process_data(df)
+print(df)
 y = df["Response"].values
 # print(y)
 X = df.iloc[0:,0:28].values
@@ -47,4 +58,25 @@ X_train, X_test,y_train, y_test = train_test_split(X,y, test_size=0.20,random_st
 """
 part 2: train and evaluate a classifer of your choice (e.g. logistic regression, SVM) using n-fold cross validation
 """
- 
+lr = LogisticRegression()
+lr.fit(X_train, y_train)
+weights = lr.coef_
+intercept = lr.intercept_
+print("part 1: LogisticRegression weights= ", weights) 
+print("part 1: LogisticRegression intercept= ",intercept)
+accuracy_train = lr.score(X_train, y_train)
+print("part 1: LogisticRegression accuracy = ", accuracy_train)
+y_pred = lr.predict(X_train)
+f1 = f1_score(y_train, y_pred, average="weighted")
+print("part 1: LogisticRegression f1 score: ", f1)
+
+# n fold cross validation : try with n = 5 
+n =5;
+# divide the training data into 5 groups 
+
+"""
+part 3: implement your own grid search procedure from scrach which should include a search over at least two hyper-parameters
+    C 
+    penalty parameters
+    
+"""

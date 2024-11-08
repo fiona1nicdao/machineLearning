@@ -1,3 +1,70 @@
 Intro Computer Vision
+ Nov 7, 2024
 
 CNN : compu
+
+computer images 
+    3 color channels 
+    height: 4 units (pixels)
+    width: 4 units (pixels)
+
+Mnist dataset 
+    hello world of deep learning 
+    classify 28x28 pixels grayscale images of handwritten digits 
+
+Load MNIST dataset 
+
+Prepare trianing data
+
+Network architecture 
+    10 classes 
+    so 10 outputs for all 10 claases 
+
+complilation and training 
+    compile to get data structure 
+    specify the loss you want to use 
+    the fit method to wheere you pass the training data 
+    when you are trianing the data you are keeping an eye on the loss bc you can the loss to decrease after each epoch 
+
+Making predictions 
+    predictions 
+Evaluate on never-before-seen digits 
+Computer Vision
+    CV led to the ..
+
+CNN is a stack of Conv2D and MaxPooling2D
+    inputs = keras.input 
+    conv2D is a sequence of layers and passes its output to the next layer 
+    CNN is a Conv2D and MaxPooling2D layers of these two 
+    7 layers in this example 
+Problem with MLP: its not translation invariant ! 
+    training : picture of cat near right side 
+    test : picture car near left side 
+    MLP will fail if the cat is not exactly in the right position 
+
+The convolution operation 
+    look at image and look at the features within the image 
+    -fundamental difference between a densely connected layer and convolution 
+
+Lines and textures to simple objects to cat 
+    - cat : look at features and then decide what to classify 
+
+This is not a without problems 
+    picture of features = face (test)
+    picture of face = face (training )
+    presents of the features not the distance of the features 
+
+convolution with a 3x 3 filter (no depth)
+    dot product : filter and image patch  = feature 
+    focus on one feature (we have no idea what that feature is )
+    each filter capture one feature 
+    you choose the number of filters (hyper-parameter )
+
+    filter is to detect one kind of feature 
+    output maxtrix  = feature map : this map of input image and tells you if that feature you are looking for is in that section of the image 
+
+CNN applied to image classification 
+    early layers are simple feature (lines or shapes)
+    later layers create higher level features / combine lower level features to more complex objects (eyes, nose, ears )
+
+EXAM : slide 22 how to compute 

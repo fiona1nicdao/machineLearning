@@ -2,3 +2,114 @@ Deep Learning with Keras
     based on Francois Chollet Text 
 *** will use this in the project 
 use layers as building blocks then compile it 
+
+Nov 7 , 2024
+Deep learning and machine learning 
+    machine learning : input --> feature extraction (human) --> classification --> output
+    deep learning : input --> feature extraction + classification --> output
+
+Data representation: Tensors 
+    Tensors: mutli-dimensional numpy arrays
+     all current DL frameworks use teneor (tenorflow)
+
+Scalars (0D tensors)
+    a tensor that contains oly one number is called a scalar 
+    in numpy
+
+Vectors (1D tensor)
+    an array of number 
+
+Matrices (2D tensors)
+    an array of vectors in a matrix, or 2D tensor 
+    a matrix 
+
+3D tensor 
+    if you pack matrices in a new array, you obtain 
+
+Batching 
+    in general, the first axis (axis 0, becuase indexing starts at 0) in all data tensors you'll come across in deep learning will be the samples axis
+
+Concrete examples of data tensors 
+    - vector data 2D tensors of shape (samples, features)
+    -timeseries data or sequence data - 3D tensor of shape (samples, timesteps, features )
+    -images 4D 
+    - video 5D (dont worry)
+
+Timeseries (sequence) data - 3D tensor 
+    -text data 
+
+image data - 4D 
+    - 
+
+neural networks are programs 
+    -neural netowrks as programs
+        we can't write a program to classify images 
+        but we can write a program that will learn to classify 
+    -**Neurons are variables and weights are instructions 
+    input layer --> hidden layer --> output layer 
+
+    why can't we reverse engineer from output to the input  ?
+        - there are so many 
+        if nearons nets are program = the program is long 
+        neuronal networks   - a lot of computations 
+        - one billion instructions 
+        - why it works not easy to follow 
+Tensor operations 
+    -computer programs can be reduced to a small 
+    - neural networks can be reduced to a handful oftensor operations 
+        ex: tensor addition and tensor multiplication
+Chain of tensor operations 
+    - all NNs do is geometric transformation ofthe input data 
+    - image two sheets of colored paper: one red and 
+    - why we need many layers of 
+A geometric interpretation of deep learning 
+
+Keras example: loading data 
+    - take a matrix and reshape to be a vector 
+
+Keras example : NN 
+    - think of neural networks are layers 
+    - layers - input layer hidden layer 
+    - network.complile(optimizer='rmsprop')
+    exam: 5000 images training for 5 epochs : look at 5000 * 5 
+    batch_size = 128 (a higher batch size really good GPU)
+
+Anatomy if a NN 
+    image 
+    every layer has own weight / data transformation 
+    layer are sequential / not parallel b/c depend
+    epoch vs batch 
+        epoch is going through the entire training set 
+        100 training examples 
+        batch size is 10 
+        number of epochs is 5
+        1 epoch: 100 training examples or 10 batches 
+
+Layers 
+    the fundamental data structure (not a data structure) in neural networks is the layer  
+    layers are functions / call function --> put an input then gives an output 
+    one type of layer we see is dense layer 
+
+Layers and tensor shapes 
+    simple vector data - dense layer 
+    sequence data (finance) - recurrent layer 
+    image data - use convolution layers
+
+Layers in Keras 
+    from Kera import layers 
+    layer = layers.Dense(32, input_shape=(784,))
+
+Layer compatability 
+    don;t need to tell the shape of the input of the layer 
+    try the code 
+
+Keras vs Tensorflow (google for simple NN)
+
+DL software and hardware stack
+Model definition: Sequentiall Model vs Functional API
+    model - standard sequential api 
+
+    input_tensor (more like pyTorch ) better than for complex 
+
+Confiduring the learning process and learning 
+    image clasificaiton 
