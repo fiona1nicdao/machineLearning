@@ -73,35 +73,82 @@ part 2: train and evaluate a classifer of your choice (e.g. logistic regression,
 # y_pred = lr.predict(X_test)
 # f1 = f1_score(y_test, y_pred, average="weighted")
 # print("part 1: LogisticRegression f1 score: ", f1)
-
-# n fold cross validation : try with n = 5 
-n =10;
-# divide the training data into 5 groups 
-num_examples = len(X_train)
-fold_size = num_examples // n 
-
-indices = np.random.permutation(num_examples)
-
-f1_scores = []
-
-for i in range(n):
-    start, end = i * fold_size, (i+1) * fold_size
-    test_indices = indices[start:end]
+def n_fold_cross_validation(X, y, n=5) : 
+    # n fold cross validation : try with n = 5 
     
-    X_ntest, y_ntest = X_train[test_indices],y_train[test_indices]
-    train_indices = np.concatenate([indices[:start],indices[end:]])
-    X_ntrain, y_ntrain = X_train[train_indices],y_train[train_indices]
-    
-    model = LogisticRegression(max_iter=200)
-    model.fit(X_ntrain, y_ntrain)
-    
-    y_pred = model.predict(X_ntest)
-    accuracy = f1_score(y_ntest, y_pred)
-    f1_scores.append(accuracy)
-    print(f"Fold {i +1} accuracy : {accuracy:.4f}")
-    
-mean_accuracy = np.mean(f1_scores)
-std_accuracy = np.std(f1_scores)
-print(f"\nMean accuracy: {mean_accuracy:.4f}") 
-print(f"Standard deviation of accuracy: {std_accuracy:.4f}")
+    # divide the training data into 5 groups 
+    num_examples = len(X)
+    fold_size = num_examples // n 
 
+    indices = np.random.permutation(num_examples)
+
+    f1_scores = []
+
+    for i in range(n):
+        start, end = i * fold_size, (i+1) * fold_size
+        test_indices = indices[start:end]
+        
+        X_ntest, y_ntest = X[test_indices],y[test_indices]
+        train_indices = np.concatenate([indices[:start],indices[end:]])
+        X_ntrain, y_ntrain = X[train_indices],y[train_indices]
+        
+        lr = LogisticRegression(max_iter=200)
+        lr.fit(X_ntrain, y_ntrain)
+        
+        y_pred = lr.predict(X_ntest)
+        accuracy = f1_score(y_ntest, y_pred)
+        f1_scores.append(accuracy)
+        print(f"Fold {i +1} accuracy : {accuracy:.4f}")
+        
+    mean_accuracy = np.mean(f1_scores)
+    std_accuracy = np.std(f1_scores)
+    print(f"\nMean accuracy: {mean_accuracy:.4f}") 
+    print(f"Standard deviation of accuracy: {std_accuracy:.4f}")
+
+n_fold_cross_validation(X_train,y_train,10)
+"""
+part 3: implement your own grid search procedure from scratch which should include a search over at least two hyper-parameters. 
+run a grid search over these hyperparameters and decide which hyperparameter combination gives you the best performance 
+your grid search should rely on your n-fold cross validation implementation from subproblem 3 above the score different models 
+"""
+
+def grid_search_C_and_penalty(X,y,X_test, y_test) :
+    C_values = [0.01, 0.1, 1, 10, 100]
+    penalty_values = ['l1', 'l2']
+    
+    best_params = None
+    best_f1_score = 0
+    results = []
+    
+    for C in C_values :
+        for penatly in penalty_values : 
+            if penatly == 'l1' : 
+                solver = 'liblinear' # supports l1 regularization
+            else : solver = 'lbfgs' # supports l2 regularization
+            
+            lr = LogisticRegression(C=C, penalty=penatly, solver=solver, max_iter=1000)
+            lr.fit(X,y)
+            
+            y_pred = lr.predict(X_test)
+            f1 = f1_score(y_test, y_pred)
+            results.append({'C': C, 'penalty': penatly,'f1':f1})
+            
+            if f1 > best_f1_score :
+                best_f1_score = f1
+                best_params = {'C': C, 'penalty':penatly}
+    # Display the results
+    print("Best Parameters:", best_params)
+    print("Best Validation F1 Score:", best_f1_score)
+    print("\nAll Results:")
+    for result in results:
+        print(result)
+
+grid_search_C_and_penalty(X_train, y_train, X_test, y_test)
+
+"""
+PART 4 
+evaluate the best model that you identify in part 3 and report
+its performance on the test set. 
+compare this number to the performance of your best model on the training set(i.e. train and test on the training data) and explain the difference 
+"""
+# need to finish ! 
