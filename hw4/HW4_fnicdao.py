@@ -3,8 +3,7 @@
     Homework 4: Chapter 6 model selection
     PLEASE LOOK AT PDF FOR REPORT on SAKI 
 
-    used Titanic dataset:  
-    Link: https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis?resource=download
+    used Titanic dataset
 
     PART 1 - 4  
 """
@@ -14,6 +13,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression 
 from sklearn.metrics import f1_score 
 
+"""
+PART 1: Split Training (80%) and Test (20%)
+"""
 #import Titanic train.csv file 
 ## please change the file_path to where you store titanic train.csv file
 file_path = '/Users/fionanicdao/loyola/machineLearning/titanic_hw1/train.csv'
@@ -59,13 +61,14 @@ df = TitanicDataset.process_data(df)
 # set X(features) and y (target class labels) from dataset
 y = df["Survived"].values
 X = df.iloc[0:,1:5].values
-# df_training (70%), df_development (15%), df_test (15%)
+# df_training (80%), df_test (20%)
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.20, random_state=42)
 
 """
-part 2: train and evaluate a classifer of your choice (e.g. logistic regression, SVM) using n-fold cross validation
+PART 2: train and evaluate a classifer of your choice (e.g. logistic regression, SVM)
+        using n-fold cross validation
 """
-print("### part 4 ####")
+print("### part 2 ####")
 def n_fold_cross_validation(X, y, n=5, C=1.0, penalty='l2', solver='lbfgs') : 
     # n fold cross validation : default is  n = 5 
     # divide the training data into 5 groups 
@@ -101,11 +104,13 @@ def n_fold_cross_validation(X, y, n=5, C=1.0, penalty='l2', solver='lbfgs') :
 
 n_fold_cross_validation(X_train,y_train,10)
 """
-part 3: implement your own grid search procedure from scratch which should include a search over at least two hyper-parameters. 
-run a grid search over these hyperparameters and decide which hyperparameter combination gives you the best performance 
-your grid search should rely on your n-fold cross validation implementation from subproblem 3 above the score different models 
+PART 3: implement your own grid search procedure from scratch which should include
+        a search over at least two hyper-parameters. run a grid search over these 
+        hyperparameters and decide which hyperparameter combination gives you the 
+        best performance your grid search should rely on your n-fold cross validation
+        implementation from subproblem 3 above the score different models 
 """
-print("### part 3 ###")
+print("\n### part 3 ###")
 def grid_search_C_and_penalty(X,y) :
     C_values = [0.01, 0.1, 1, 10, 100]
     penalty_values = ['l1', 'l2']
@@ -140,15 +145,14 @@ def grid_search_C_and_penalty(X,y) :
 best_C, best_penatly,best_solver, best_f1 = grid_search_C_and_penalty(X_train, y_train)
 
 """
-PART 4 
-evaluate the best model that you identify in part 3 and report
-its performance on the test set. 
-compare this number to the performance of your best model on the training set(i.e. train and test on the training data) and explain the difference 
+PART 4 : evaluate the best model that you identify in part 3 and report its performance 
+        on the test set. Compare this number to the performance of your best model on the 
+        training set(i.e. train and test on the training data) and explain the difference 
 """
 
-print("### part 4 ####")
-print("The best C : " + best_C + "\n The best penalty: " + best_penatly + "\n The bet solver: " + best_solver )
-print("The best f1 score: " + best_f1)
+print("\n### part 4 ####")
+print("The best C : ",best_C , "\nThe best penalty: ",best_penatly, "\nThe bet solver: ", best_solver )
+print("The best f1 score: ", best_f1)
 
 lr = LogisticRegression(C=best_C, penalty=best_penatly, solver=best_solver, max_iter=1000)
 lr.fit(X_test,y_test)
