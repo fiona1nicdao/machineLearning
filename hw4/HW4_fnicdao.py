@@ -8,11 +8,11 @@
 
     PART 1 - 4  
 """
-import numpy as np # type: ignore
-import pandas as pd # type: ignore # data processing / CVS file I/O
-from sklearn.model_selection import train_test_split # type: ignore
-from sklearn.linear_model import LogisticRegression # type: ignore
-from sklearn.metrics import f1_score # type: ignore
+import numpy as np 
+import pandas as pd  # data processing / CVS file I/O
+from sklearn.model_selection import train_test_split 
+from sklearn.linear_model import LogisticRegression 
+from sklearn.metrics import f1_score 
 
 #import Titanic train.csv file 
 ## please change the file_path to where you store titanic train.csv file
@@ -25,8 +25,11 @@ class TitanicDataset(object):
         df = df.drop(["PassengerId", "Ticket", "Fare", "Cabin", "Embarked","Name","Age"], axis=1)
 
         df["Survived"] = df["Survived"].map({0 : -1, 1:1})
-        # no processing done with Pclass
-         
+        # Get the counts of each unique value && # Calculate the percentage for each value
+        counts = df['Survived'].value_counts()
+        percentages = (counts / counts.sum()) * 100 
+        # print(percentages)
+        
         # sex : male = 0 and female = 1
         df["Sex"] = df["Sex"].map({"male": 0, "female": 1})
 
@@ -62,10 +65,9 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.20, random_
 """
 part 2: train and evaluate a classifer of your choice (e.g. logistic regression, SVM) using n-fold cross validation
 """
-
+print("### part 4 ####")
 def n_fold_cross_validation(X, y, n=5, C=1.0, penalty='l2', solver='lbfgs') : 
-    # n fold cross validation : try with n = 5 
-    
+    # n fold cross validation : default is  n = 5 
     # divide the training data into 5 groups 
     num_examples = len(X)
     fold_size = num_examples // n 
@@ -86,16 +88,16 @@ def n_fold_cross_validation(X, y, n=5, C=1.0, penalty='l2', solver='lbfgs') :
         lr.fit(X_ntrain, y_ntrain)
         
         y_pred = lr.predict(X_ntest)
-        accuracy = f1_score(y_ntest, y_pred)
-        f1_scores.append(accuracy)
-        print(f"Fold {i +1} accuracy : {accuracy:.4f}")
+        f1 = float(f1_score(y_ntest, y_pred))
+        f1_scores.append(f1)
+        print(f"Fold {i +1} f1 : {f1:.4f}")
         
-    mean_accuracy = np.mean(f1_scores)
-    std_accuracy = np.std(f1_scores)
-    print(f"\nMean accuracy: {mean_accuracy:.4f}") 
-    print(f"Standard deviation of accuracy: {std_accuracy:.4f}")
+    mean_f1 = np.mean(f1_scores)
+    std_f1 = np.std(f1_scores)
+    print(f"\nMean f1: {mean_f1:.4f}") 
+    print(f"Standard deviation of f1: {std_f1:.4f}")
     
-    return(mean_accuracy, C, penalty, lr)
+    return(mean_f1, C, penalty, lr)
 
 n_fold_cross_validation(X_train,y_train,10)
 """
@@ -120,11 +122,6 @@ def grid_search_C_and_penalty(X,y) :
             
             f1, C, penatly, lr = n_fold_cross_validation(X,y,10,C, penatly,solver)
             
-            # lr = LogisticRegression(C=C, penalty=penatly, solver=solver, max_iter=1000)
-            # lr.fit(X,y)
-            
-            # y_pred = lr.predict(X_test)
-            # f1 = f1_score(y_test, y_pred)
             results.append({'C': C, 'penalty': penatly, 'f1':f1})
             
             if f1 > best_f1_score :
@@ -137,13 +134,10 @@ def grid_search_C_and_penalty(X,y) :
     print("\nAll Results:")
     for result in results:
         print(result)
+        
     return(best_params['C'], best_params['penalty'], best_params['solver'],best_f1_score)
 
 best_C, best_penatly,best_solver, best_f1 = grid_search_C_and_penalty(X_train, y_train)
-print(best_C)
-print(best_penatly)
-print(best_solver)
-print(best_f1)
 
 """
 PART 4 
@@ -152,9 +146,13 @@ its performance on the test set.
 compare this number to the performance of your best model on the training set(i.e. train and test on the training data) and explain the difference 
 """
 
+print("### part 4 ####")
+print("The best C : " + best_C + "\n The best penalty: " + best_penatly + "\n The bet solver: " + best_solver )
+print("The best f1 score: " + best_f1)
+
 lr = LogisticRegression(C=best_C, penalty=best_penatly, solver=best_solver, max_iter=1000)
 lr.fit(X_test,y_test)
             
 y_pred = lr.predict(X_test)
-f1 = f1_score(y_test, y_pred)
-print("test f1 score",f1)
+f1_test = f1_score(y_test, y_pred)
+print("test f1 score",f1_test)
