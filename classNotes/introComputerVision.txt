@@ -1,7 +1,7 @@
 Intro Computer Vision
  Nov 7, 2024
 
-CNN : compu
+CNN : convolution neural network 
 
 computer images 
     3 color channels 
@@ -112,4 +112,15 @@ Full model slide 31
     - will extract features -automatically 
     - condensing the images / features to camputing larger areas on the input 
     - why CNN - detect features and combine features --> to classify 
-    
+    - receptive field = the viewing area of the CNN 
+
+leveraging a pretrained model 
+    - typically trained on a large-scale image classification task 
+        -imageNet
+
+feature extraction slide 34 : TRANSER LEARNING - how CNN is used in practice 
+    - never train from scratch 
+    - use transfer neural 
+    - take someone else convolution base / train classfier / 
+    - then remove the trained classfier / keep feature extraction
+    - then add new classifier (randomly initialized)
