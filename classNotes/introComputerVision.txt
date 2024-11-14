@@ -68,3 +68,48 @@ CNN applied to image classification
     later layers create higher level features / combine lower level features to more complex objects (eyes, nose, ears )
 
 EXAM : slide 22 how to compute 
+-----------------------
+what is the probelm with using multilayer perceptron with photo with cats in different positions will not see the photos of the cat as  the same , while CNN will see the two photos of the cat as the same 
+
+EXAM question : slide 16 with problem with MLP: its not translation invarient ! 
+
+slide 18 : CNN properties 
+    - the patterns that CNNs learn are translation invariant 
+    - CNN can learn spatial hierarchies of patterns 
+slide 19
+learn simple features : lines and textures to simple objects to cat 
+
+slide 20 
+    issue with CNN
+
+slide 22
+    image 
+    feature map : convolved feature 
+        this position : this feature might be , the higher the number the more likley the feature is in there 
+    KNOW HOW TO CALCULATE THIS FEATURE MAP !!!!!!!!!!!!
+
+Adding the depth dimension 
+    feature of colors in RGB and gives output 
+
+CNN applied to image classification 
+    - input --> feature learning --> classification 
+    - detect edges from raw pixels in the first layer
+    - use the detect simple shapes in higher layers 
+    - the last layer is then a classifier that uses these high-level features 
+CNN - know how to explain examples slide 25
+
+Max pooling layers slide 29 
+    - max pooling layer
+    100x100 pixel and reduce to 25x25
+        one idea: take the average of 2x2 
+        MAP pool : take the max pixel color / pick the largest value 
+
+Map pooling slide 30
+    -down sample - the input b/c convolution operation look at increasinnly large windows 
+    -to find more complex features from edges and lines 
+
+Full model slide 31
+    - will extract features -automatically 
+    - condensing the images / features to camputing larger areas on the input 
+    - why CNN - detect features and combine features --> to classify 
+    
