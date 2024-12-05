@@ -1,0 +1,11 @@
+Dec 5, 2024
+Conscious Machines - 
+
+VGG16 architecture : we can easily implement VGG16 (16 layers) in Keras
+solutions to the hard problem 
+
+Are AIs conscious ?
+ - one ofthe studies worms, the nematodes Caenorhabidits elegans, has exactly 302 neurons in the adult hermaphrodies form 
+ - David Chalmers about GT3:
+ - GPT4 likely has hundreds of billions of parameters 
+ 

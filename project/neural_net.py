@@ -59,3 +59,5 @@ y_test = pd.read_csv(file_path_ytest, sep="\t")
 #     writer.writerows(X_train)
 """
 
+# accuracy vs f1 scoring 
+# write neural network 
