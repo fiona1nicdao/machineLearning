@@ -9,7 +9,8 @@
     
 """
 import tensorflow as tf
-from tensorflow import keras 
+from tensorflow.keras import layers, models
+from tensorflow.keras.utils import to_categorical
 import numpy as np 
 import pandas as pd  # data processing / CVS file I/O
 from sklearn.model_selection import train_test_split
@@ -23,6 +24,9 @@ X_train = pd.read_csv(file_path_xtrain, sep="\t")
 
 file_path_ytrain = '/Users/fionanicdao/loyola/machineLearning/project/y_train.csv'
 y_train = pd.read_csv(file_path_ytrain, sep="\t")
+
+X_train, X_validate,y_train, y_validate = train_test_split(X_train,y_train, test_size=0.10,random_state=42)
+print(y_train)
 
 file_path_xtest = '/Users/fionanicdao/loyola/machineLearning/project/X_test.csv'
 X_test = pd.read_csv(file_path_xtest, sep="\t")
