@@ -4,7 +4,11 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 import tensorflow as tf
 import numpy as np
+import pandas as pd  # data processing / CVS file I/O
 
+file_path = '/Users/fionanicdao/loyola/machineLearning/hw4/marketing_campaign.csv'
+data = pd.read_csv(file_path, sep="\t")
+print(data.head())
 # Identify features and target
 target = 'Response'
 categorical_features = ['Education', 'Marital_Status']
@@ -22,7 +26,7 @@ data['Income'].fillna(data['Income'].median(), inplace=True)
 # Split data into features and target
 X = data[categorical_features + numerical_features]
 y = data[target]
-
+# print(data.head())
 # Split the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
 
@@ -33,7 +37,7 @@ preprocessor = ColumnTransformer(
         ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features)
     ]
 )
-
+# print(X_train.head())
 # Preprocess the data
 X_train = preprocessor.fit_transform(X_train)
 X_test = preprocessor.transform(X_test)
