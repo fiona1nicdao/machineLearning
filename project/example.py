@@ -62,6 +62,8 @@ print(result)
     #     writer = csv.writer(csvfile)
     #     writer.writerows(X_train)
 """
+file_path = '/Users/fionanicdao/loyola/machineLearning/hw4/marketing_campaign.csv'
+data = pd.read_csv(file_path, sep="\t")
 
 # cat_columns = X_train.select_dtypes(include=['object']).columns
 # num_columns = X_train.select_dtypes(include=['int64','float64']).columns

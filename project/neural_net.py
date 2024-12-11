@@ -11,7 +11,6 @@ import pandas as pd  # data processing / CVS file I/O
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
-
 from sklearn.metrics import f1_score, accuracy_score, classification_report
 import csv
 
