@@ -32,12 +32,6 @@ df = df.drop(columns=['ID', 'Dt_Customer', 'Z_CostContact', 'Z_Revenue'])
 # Handle missing values by imputing with median for numerical columns
 df['Income'].fillna(df['Income'].median(), inplace=True)
 
-# Split data into features and target
-X = df[categorical_features + numerical_features]
-y = df[target]
-# Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-
 #process data even more  
 preprocessor = ColumnTransformer(
     transformers=[
@@ -45,6 +39,13 @@ preprocessor = ColumnTransformer(
         ('cat', OneHotEncoder(handle_unknown='ignore'),categorical_features)
     ]
 )
+
+# Split data into features and target
+X = df[categorical_features + numerical_features]
+y = df[target]
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+
 X_train = preprocessor.fit_transform(X_train)
 X_test = preprocessor.transform(X_test)
 
@@ -52,17 +53,17 @@ X_test = preprocessor.transform(X_test)
 input_dim = X_train.shape[1]
 model = Sequential([
     Dense(16, activation = 'relu', input_dim=input_dim),
+    Dense(16, activation = 'relu'),
     Dense(8, activation = 'relu'),
     Dense(1, activation = 'sigmoid') # Binary Classification 
 ])
-
 # compile 
-model.compile(optimizer = 'adam',loss='binary_crossentropy',metrics=['accuracy'])
+model.compile(optimizer = 'adam',loss='binary_crossentropy',metrics=['accuracy', 'precision', 'recall'])
 #train the model 
-history = model.fit(X_train,y_train, validation_data=(X_test, y_test),epochs=20, batch_size=50, verbose=1)
+history = model.fit(X_train,y_train, validation_data=(X_test, y_test),epochs=20, batch_size=32, verbose=1)
 
 # accuracy vs f1 scoring 
-loss, accuracy= model.evaluate(X_test,y_test,verbose=0)
+loss, accuracy, precision, recall= model.evaluate(X_test,y_test,verbose=0)
 print("Loss: ", loss)
 
 y_pred = np.concatenate((model.predict(X_test)) > 0.5).astype(int)
